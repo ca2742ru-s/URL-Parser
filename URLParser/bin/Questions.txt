@@ -1,0 +1,53 @@
+Thank you for the opportunity to work on this exercise! It was very fun and probably went a bit too deep into some small aspects of it.
+To run the program just uncomment all of the URLs given to the stringlist in App.java and then hit run.
+
+Some of the questions to consider:
+● How will you decide which database URL formats to support?
+    - Research what differences are and how many
+        There seems to be different protocol standards used (RFC 3986 and RFC 2396).
+        The former is modern and follows the same URL protocol for most of the time so should be implemented first.
+        The latter does not follow a uniform standard and could be implemented but with specific cases depending on
+        what DBSM is used.
+        ------------------------------------------------------------------------------------------------------------------------------
+        Now once I am done I realized there are multiple protocols that follow the two RFC standards differently which caused me to go 
+        deeper into the specific protocols instead. The main takeaway however wasnt too much different, just that more specific cases
+        had to be implemented instead of my initial hope which was to follow RFC.
+
+    - Check userbase and implement the most frequent to begin with
+        According to db-engines.com this is the current (Feb2025) rankings of datbase engines:
+        1. Oracle (RFC 2396)
+        2. MySQL
+        3. MS SQL Server (RFC 2396)
+        4. PostgreSQL (RFC 3986)
+        5. MongoDB (RFC 3986)
+        These are also the most common one I saw when researching online. Because of this, these should be prioritized.
+    - Can AI be used to identify formats?
+        This was an idea I had which might work but is probably too big of a scope to get into this quickly.
+
+● Is the object model you design best suited for generic code, database-specific code, or both?
+    - In my model I can access all the parts by calling the parsers getter methods. If I want to grab a full URL via a database I can.
+    - This is very basic stuff right now but later I would like to be able to fiddle more with the attributes (like changing values on the
+    queries etc)
+
+● Can your solution be extended to support more database types?
+    - Most likely with more cases
+        From what I can gather, if I implement URI I can probably get more into it but I thought it was cheating.
+        Usually I would use a preexisting library to implement something like this but for this exercise I wanted to try it out on my own.
+        In order to get more types on board I would have to make a more in depth specific case parser to catch the different protocols.
+        With more time I could make a more sofisticated parser that uses different algorithms based on the URL given. Right now it has one broad
+        algorithm that handles a few protocols but for future reference one should implement different specific algorithms.
+
+        What I would like to extend on this is also a way to reproduce a URL in a different format. Right now it is being reproduced in the 
+        way it was deconstructed but it would be cool to parse using default protocol into Distinguished Name or Semicolon Delimiter protocol
+
+● How do you ensure your solution is correct?
+    - Try with different URLs
+        I used ChatGPT and Google to give me some different URLs to test. I tried to quickly implement URI to see what it could grab from the URLs
+        but the test cases it provided wasnt what I wanted so dropped it quickly.
+    - Write JUnit tests
+        Usually what I do but I spent too much time on the parser and didnt have more time to put on JUnit. I know there are a few pitfalls in 
+        my code that should be taken care of but I do feel it is quite robust if you put in URLs that it was based on.
+        Some things like saving the portnumber as String should be fine as long as correct conversion is made when needed by other applications.
+
+    - (Not in this exercise but usually) discuss with friend/colleague
+
